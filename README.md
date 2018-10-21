@@ -6,7 +6,7 @@ Ansible role to deploy Ansible AWX on a CentOS 7 host.
 Requirements
 ------------
 
-Host that AWX will be deployed on in running CentOS 7.
+Host that AWX will be deployed on is running CentOS 7.
 
 Role Variables
 ------------
