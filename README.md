@@ -1,7 +1,7 @@
 Ansible AWX Role
 =========
 
-Ansible role to deploy Ansible AWX on a CentOS 7 host.
+Ansible role to deploy Ansible AWX on a CentOS 7 host with options of container based, local, or remote postgresql server.
 
 Requirements
 ------------
@@ -16,6 +16,20 @@ Role variables are listed below with default values (see `defaults/main.yml`):
     awx_repo: https://github.com/ansible/awx.git
     awx_repo_dir: "~/awx"
     awx_version: 2.0.1
+
+If awx_db_type is undefined the default is:
+
+    awx_db_type: container
+
+Other options for awx_db_type:
+    
+    awx_db_type: local
+    awx_db_type: remote
+    
+If awx_db_type is set to `remote` an additional variable is required:
+
+    pg_hostname: postgresdb.host.local
+
 
 Dependencies
 ------------
