@@ -3,3 +3,5 @@
 awx_repo: https://github.com/ansible/awx.git
 awx_repo_dir: "~/awx"
 awx_version: 2.0.1
+#awx_db_type: local
+#pg_hostname: pgdb.domain.local
