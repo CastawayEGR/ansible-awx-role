@@ -1,6 +1,12 @@
 ---
 # tasks file for doing yum related tasks
 
+- name: Install postgres 9.6 repo on host.
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+    state: present
+  when: awx_db_type == "local"
+
 - name: Yum update AWX host.
   yum:
     name: '*'
@@ -19,3 +25,18 @@
       - git
       - python-docker-py
     state: latest
+  register: deps
+
+- name: Install postgres-server 9.6 and pip on host.
+  yum:
+    name:
+      - postgresql96-server
+      - python-pip
+    state: present
+  register: postgresql
+  when: awx_db_type == "local"
+
+- name: Pip install psycopg2 on host.
+  pip:
+    name: psycopg2
+  when: awx_db_type == "local"

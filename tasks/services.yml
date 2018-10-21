@@ -1,6 +1,12 @@
 ---
 # tasks file to enable needed services
 
+- name: Enable postgres server 9.6 on db server.
+  systemd:
+     name: postgresql-9.6
+     enabled: true
+  when: awx_db_type == "local"
+
 - name: Enable docker service on AWX host.
   systemd:
     name: docker
@@ -10,3 +16,10 @@
   systemd:
     name: docker
     state: started
+
+- name: Start postgres server 9.6 on db server.
+  systemd:
+    name: postgresql-9.6
+    state: started
+  when: awx_db_type == "local"
+

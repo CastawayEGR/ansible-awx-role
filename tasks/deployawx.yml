@@ -9,7 +9,20 @@
     force: true
     accept_hostkey: true
 
+- name: Replace pg_hostname if local db install selected.
+  replace:
+    path: "{{ awx_repo_dir }}/installer/inventory"
+    regexp: "# pg_hostname=postgresql"
+    replace: "pg_hostname={{ pg_hostname }}"
+  when: awx_db_type == "local" or awx_db_type == "remote"
+
 - name: Run the AWX installation playbook.
   command: "ansible-playbook -i inventory install.yml"
   args:
     chdir: "{{ awx_repo_dir }}/installer"
+
+- name: Restart postgres server 9.6 on server.
+  systemd:
+    name: postgresql-9.6
+    state: restarted
+  when: awx_db_type == "local"

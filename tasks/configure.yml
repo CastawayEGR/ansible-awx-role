@@ -1,0 +1,34 @@
+---
+# tasks file for configuring postgres enviroment
+
+- name: Initialize postgresql database for AWX.
+  command: '/usr/pgsql-9.6/bin/postgresql96-setup initdb'
+  register: pgdb
+  changed_when: pgdb.rc == 0
+  failed_when: "'not empty' in pgdb.stdout and pgdb.rc != 1"
+
+- name: Replace ident with md5 in pg_hba.conf file on database serveri.
+  replace:
+    path: '/var/lib/pgsql/9.6/data/pg_hba.conf'
+    regexp: 'ident'
+    replace: 'md5'
+
+- name: Add AWX docker network access to postgres database.
+  lineinfile:
+    path: '/var/lib/pgsql/9.6/data/pg_hba.conf'
+    line: 'host    all             all             172.17.0.0/16         md5'
+
+- name: Enable external connections to postgres database.
+  replace:
+    path: '/var/lib/pgsql/9.6/data/postgresql.conf' 
+    regexp: "#listen_addresses = 'localhost'"
+    replace: "listen_addresses = '*'"
+
+- name: Allow postgresql server port 5432.
+  firewalld:
+    port: 5432/tcp
+    zone: internal
+    immediate: true
+    permanent: true
+    state: enabled
+    source: 172.17.0.0/16

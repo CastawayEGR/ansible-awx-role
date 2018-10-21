@@ -1,5 +1,24 @@
 ---
-# tasks file for ansible-awx
+# tasks file for ansible-awx-role
+
+- set_fact: awx_db_type="container"
+  when: awx_db_type is undefined
+
+- set_fact: pg_hostname="172.17.0.1"
+  when: awx_db_type == "local"
+
 - import_tasks: installdep.yml
+
+- import_tasks: configure.yml
+  when: awx_db_type == "local"
+
 - import_tasks: services.yml 
+  when: deps.changed
+
+- import_tasks: users.yml
+  when: awx_db_type == "local"
+
+- import_tasks: database.yml
+  when: awx_db_type == "local"
+
 - import_tasks: deployawx.yml

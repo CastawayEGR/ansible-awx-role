@@ -1,0 +1,11 @@
+---
+# tasks file to create postgresql db for AWX
+
+ - name: Create AWX database on postgresql server.
+   postgresql_db:
+     name: awx
+     owner: awx
+     login_user: awx
+     login_password: awxpass
+   become: yes
+   become_user: awx
