@@ -1,0 +1,5 @@
+---
+# tasks file for ansible-awx
+- import_tasks: installdep.yml
+- import_tasks: services.yml 
+- import_tasks: deployawx.yml

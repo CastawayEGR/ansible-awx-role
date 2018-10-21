@@ -1,0 +1,12 @@
+---
+# tasks file to enable needed services
+
+- name: Enable docker service on AWX host.
+  systemd:
+    name: docker
+    enabled: yes
+
+- name: Start docker service on AWX host.
+  systemd:
+    name: docker
+    state: started

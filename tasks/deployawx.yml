@@ -1,0 +1,15 @@
+---
+#tasks file to deploy awx
+
+- name: Clone latest AWX repo to host.
+  git:
+    repo: "{{ awx_repo }}"
+    dest: "{{ awx_repo_dir }}"
+    version: "{{ awx_version }}"
+    force: true
+    accept_hostkey: true
+
+- name: Run the AWX installation playbook.
+  command: "ansible-playbook -i inventory install.yml"
+  args:
+    chdir: "{{ awx_repo_dir }}/installer"

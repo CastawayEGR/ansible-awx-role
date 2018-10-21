@@ -1,0 +1,21 @@
+---
+# tasks file for doing yum related tasks
+
+- name: Yum update AWX host.
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install epel-release repo on AWX host.
+  yum:
+    name: epel-release
+    state: latest
+
+- name: Install dependencies needed for AWX on host.
+  yum:
+    name:
+      - ansible
+      - docker
+      - git
+      - python-docker-py
+    state: latest
