@@ -2,11 +2,11 @@
 # tasks file for ansible-awx-role
 
 - name: Set awx_db_type to container.
-  set_fact: awx_db_type = "container"
+  set_fact: awx_db_type="container"
   when: awx_db_type is undefined
 
 - name: Set pg_hostname if local db defined.
-  set_fact: pg_hostname = "172.17.0.1"
+  set_fact: pg_hostname="172.17.0.1"
   when: awx_db_type == "local"
 
 - import_tasks: installdep.yml

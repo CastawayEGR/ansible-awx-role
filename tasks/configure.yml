@@ -18,6 +18,9 @@
     path: '/var/lib/pgsql/9.6/data/pg_hba.conf'
     line: 'host    all             all             172.17.0.0/16         md5'
 
+- name: Enable and start firewalld.
+  service: name=firewalld state=started enabled=yes
+
 - name: Enable external connections to postgres database.
   replace:
     path: '/var/lib/pgsql/9.6/data/postgresql.conf'

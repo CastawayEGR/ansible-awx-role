@@ -1,5 +1,4 @@
 ---
 - hosts: awx
-  remote_user: root
   roles:
     - ansible-awx-role
