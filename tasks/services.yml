@@ -9,17 +9,16 @@
 
 - name: Enable docker service on AWX host.
   systemd:
-    name: docker
-    enabled: yes
+     name: docker
+     enabled: true
 
 - name: Start docker service on AWX host.
   systemd:
-    name: docker
-    state: started
+     name: docker
+     state: started
 
 - name: Start postgres server 9.6 on db server.
   systemd:
-    name: postgresql-9.6
-    state: started
+     name: postgresql-9.6
+     state: started
   when: awx_db_type == "local"
-

@@ -1,15 +1,15 @@
 ---
 # tasks file to create postgres users
 
- - name: Add AWX unix user to host.
-   user:
-     name: awx
-     state: present
+- name: Add AWX unix user to host.
+  user:
+    name: awx
+    state: present
 
- - name: Add AWX user to postgresql server.
-   postgresql_user:
-     name: awx
-     password: awxpass
-     role_attr_flags: CREATEDB,SUPERUSER,LOGIN
-   become: yes
-   become_user: postgres
+- name: Add AWX user to postgresql server.
+  postgresql_user:
+    name: awx
+    password: awxpass
+    role_attr_flags: CREATEDB,SUPERUSER,LOGIN
+  become: true
+  become_user: postgres

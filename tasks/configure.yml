@@ -20,7 +20,7 @@
 
 - name: Enable external connections to postgres database.
   replace:
-    path: '/var/lib/pgsql/9.6/data/postgresql.conf' 
+    path: '/var/lib/pgsql/9.6/data/postgresql.conf'
     regexp: "#listen_addresses = 'localhost'"
     replace: "listen_addresses = '*'"
 
