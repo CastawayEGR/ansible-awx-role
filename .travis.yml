@@ -7,7 +7,7 @@ services:
 
 env:
   matrix:
-    - MOLECULE_DISTRO: centos7
+    - OS_TYPE=centos OS_VERSION=7
 
 install:
   - pip install ome-ansible-molecule-dependencies
