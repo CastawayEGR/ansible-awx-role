@@ -6,7 +6,7 @@ services:
   - docker
 
 env:
-  - distro: centos7
+  - dist: centos7
 
 install:
   - pip install ome-ansible-molecule-dependencies
