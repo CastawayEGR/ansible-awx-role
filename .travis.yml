@@ -6,8 +6,7 @@ services:
   - docker
 
 env:
-  matrix:
-    - OS_TYPE=centos OS_VERSION=7
+  - distro: centos7
 
 install:
   - pip install ome-ansible-molecule-dependencies
