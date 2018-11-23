@@ -7,10 +7,9 @@ lint:
   name: yamllint
 platforms:
   - name: AnsibleHost
-    # image: fiercely/centos7:systemd
     image: centos:7
     privileged: true
-    command: /usr/sbin/init
+    command: /sbin/init
 provisioner:
   name: ansible
   lint:
