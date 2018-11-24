@@ -1,0 +1,8 @@
+---
+# handlers for ansible-awx-role
+
+- name: Restart postgres server.
+  systemd:
+    name: postgresql-9.6
+    state: restarted
+  when: awx_db_type == "local"
