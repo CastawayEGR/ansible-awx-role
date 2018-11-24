@@ -44,8 +44,11 @@ Example Playbook
 ----------------
 
     - hosts: awx
+      remote_user: castawayegr
       roles:
          - ansible-awx-role
+
+ansible-playbook -i inventory playbook.yml --become
 
 License
 -------
