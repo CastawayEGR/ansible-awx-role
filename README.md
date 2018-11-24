@@ -1,5 +1,9 @@
 Ansible AWX Role
 =========
+[![Build Status](https://travis-ci.org/CastawayEGR/ansible-awx-role.svg?branch=master)](https://travis-ci.org/CastawayEGR/ansible-awx-role)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/CastawayEGR/ansible-awx-role.svg?logoColor=brightgreen)](https://github.com/CastawayEGR/ansible-awx-role)
+[![GitHub last commit](https://img.shields.io/github/last-commit/CastawayEGR/ansible-awx-role.svg?logoColor=brightgreen)](https://github.com/CastawayEGR/ansible-awx-role)
 
 Ansible role to deploy Ansible AWX on a CentOS 7 host with options of container based, local, or remote postgresql server.
 
