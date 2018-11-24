@@ -9,6 +9,10 @@
   set_fact: pg_hostname="172.17.0.1"
   when: awx_db_type == "local"
 
+- name: Set ansible_user if undefined to root.
+  set_fact: ansible_user="root"
+  when: ansible_user is undefined
+
 - import_tasks: installdep.yml
 
 - import_tasks: configure.yml

@@ -39,11 +39,17 @@
     state: latest
   register: deps
 
+- name: Add user to docker usergroup.
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: true
+
 - name: Install latest version of pip.
   easy_install:
     name: pip
 
-- name: Install postgres-server 9.6 and pip on host.
+- name: Install postgres-server 9.6 on host.
   yum:
     name:
       - postgresql96-server
@@ -51,7 +57,7 @@
   register: postgresql
   when: awx_db_type == "local"
 
-- name: Pip install psycopg2 on host.
+- name: Pip install psycopg2 and docker on host.
   pip:
     name:
       - psycopg2
