@@ -20,6 +20,7 @@
 
 - name: Enable and start firewalld.
   service: name=firewalld state=started enabled=yes
+  when: ansible_connection != "docker"
 
 - name: Enable external connections to postgres database.
   replace:
@@ -35,3 +36,4 @@
     permanent: true
     state: enabled
     source: 172.17.0.0/16
+  when: ansible_connection != "docker"

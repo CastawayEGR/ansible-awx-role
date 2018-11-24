@@ -6,7 +6,7 @@ services:
   - docker
 
 env:
-  - MOLECULE_DISTRO=centos7
+  - MOLECULE_IMG=centos:7
 
 install:
   - pip install molecule docker

@@ -20,6 +20,7 @@
   command: "ansible-playbook -i inventory install.yml"
   args:
     chdir: "{{ awx_repo_dir }}/installer"
+  when: ansible_connection != "docker"
 
 - name: Restart postgres server 9.6 on server.
   systemd:

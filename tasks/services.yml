@@ -16,6 +16,7 @@
   systemd:
      name: docker
      state: started
+  when: ansible_connection != "docker"
 
 - name: Start postgres server 9.6 on db server.
   systemd:

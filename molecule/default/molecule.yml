@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: AnsibleHost
-    image: centos:7
+    image: ${MOLECULE_IMG}
     privileged: true
     command: /sbin/init
 provisioner:
